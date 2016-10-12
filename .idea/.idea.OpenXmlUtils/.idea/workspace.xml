@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3130cb13-998f-4559-8244-c267e048d1e6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../OpenXmlUtils.Tests/packages.config" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../OpenXmlUtils/packages.config" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../OpenXmlUtils.Tests/OpenXmlUtils.Tests.csproj" afterPath="$PROJECT_DIR$/../../OpenXmlUtils.Tests/OpenXmlUtils.Tests.csproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../OpenXmlUtils.Tests/SpreadsheetUnitTest.cs" afterPath="$PROJECT_DIR$/../../OpenXmlUtils.Tests/SpreadsheetUnitTest.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../OpenXmlUtils.sln" afterPath="$PROJECT_DIR$/../../OpenXmlUtils.sln" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../OpenXmlUtils/OpenXmlUtils.csproj" afterPath="$PROJECT_DIR$/../../OpenXmlUtils/OpenXmlUtils.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../OpenXmlUtils/CustomStylesheet.cs" afterPath="$PROJECT_DIR$/../../OpenXmlUtils/CustomStylesheet.cs" />
     </list>
     <ignored path="OpenXmlUtils.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +27,8 @@
       <file leaf-file-name="DecimalNumberField.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/SpreadsheetField Types/DecimalNumberField.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+            <state relative-caret-position="-140">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <marker date="1476252265000" expanded="true" signature="0:144" ph="File Information" />
                 <marker date="1476252265000" expanded="true" signature="25:133" ph="/* ... */" />
@@ -45,102 +41,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpreadsheetUnitTest.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils.Tests/SpreadsheetUnitTest.cs">
+      <file leaf-file-name="HyperlinkField.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/SpreadsheetField Types/HyperlinkField.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-238">
-              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-              <folding>
-                <marker date="1476255091000" expanded="true" signature="0:173" ph="File Information" />
-                <marker date="1476255091000" expanded="true" signature="25:162" ph="/* ... */" />
-                <marker date="1476255091000" expanded="true" signature="175:796" ph="(c) Copyright 2014 Geoplex" />
-                <marker date="1476255091000" expanded="true" signature="210:785" ph="/* ... */" />
-                <marker date="1476255091000" expanded="true" signature="804:902" ph="..." />
-                <marker date="1476255091000" expanded="true" signature="932:14829" ph="{...}" />
-                <marker date="1476255091000" expanded="true" signature="956:1393" ph="{...}" />
-                <marker date="1476255091000" expanded="true" signature="1450:14827" ph="{...}" />
-                <marker date="1476255091000" expanded="true" signature="1508:1581" ph="{...}" />
-                <marker date="1476255091000" expanded="true" signature="1660:1723" ph="{...}" />
-                <marker date="1476255091000" expanded="true" signature="1774:1934" ph="{...}" />
-                <marker date="1476255091000" expanded="true" signature="1997:4939" ph="{...}" />
-                <marker date="1476255091000" expanded="true" signature="5007:7922" ph="{...}" />
-                <marker date="1476255091000" expanded="true" signature="7979:10996" ph="{...}" />
-                <marker date="1476255091000" expanded="true" signature="11050:14821" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpreadsheetField.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/SpreadsheetField.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="29" column="59" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
+            <state relative-caret-position="-140">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <marker date="1476252265000" expanded="true" signature="0:144" ph="File Information" />
                 <marker date="1476252265000" expanded="true" signature="25:133" ph="/* ... */" />
                 <marker date="1476252265000" expanded="true" signature="146:767" ph="(c) Copyright 2014 Geoplex" />
                 <marker date="1476252265000" expanded="true" signature="181:756" ph="/* ... */" />
-                <marker date="1476252265000" expanded="true" signature="791:1040" ph="{...}" />
-                <marker date="1476252265000" expanded="true" signature="827:1038" ph="{...}" />
+                <marker date="1476252265000" expanded="true" signature="791:911" ph="{...}" />
+                <marker date="1476252265000" expanded="true" signature="844:909" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormulaCell.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/FormulaCell.cs">
+      <file leaf-file-name="CustomStylesheet.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/CustomStylesheet.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-242">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="153">
+              <caret line="268" column="18" selection-start-line="268" selection-start-column="18" selection-end-line="268" selection-end-column="18" />
               <folding>
-                <marker date="1476252265000" expanded="true" signature="0:136" ph="File Information" />
-                <marker date="1476252265000" expanded="true" signature="25:125" ph="/* ... */" />
-                <marker date="1476252265000" expanded="true" signature="138:759" ph="(c) Copyright 2014 Geoplex" />
-                <marker date="1476252265000" expanded="true" signature="173:748" ph="/* ... */" />
-                <marker date="1476252265000" expanded="true" signature="826:1129" ph="{...}" />
-                <marker date="1476252265000" expanded="true" signature="864:1127" ph="{...}" />
-                <marker date="1476252265000" expanded="true" signature="936:1121" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="0:145" ph="File Information" />
+                <marker date="1476256593000" expanded="true" signature="25:134" ph="/* ... */" />
+                <marker date="1476256593000" expanded="true" signature="147:768" ph="(c) Copyright 2014 Geoplex" />
+                <marker date="1476256593000" expanded="true" signature="182:757" ph="/* ... */" />
+                <marker date="1476256593000" expanded="true" signature="776:953" ph="..." />
+                <marker date="1476256593000" expanded="true" signature="977:17320" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="1026:17318" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="1077:1568" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="1603:2277" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="2333:2605" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="2677:2753" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="2807:3214" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="3224:3344" ph="/// ..." />
+                <marker date="1476256593000" expanded="true" signature="3526:9661" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="9870:11116" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="11182:11576" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="11624:13291" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="13335:14953" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="14997:16855" ph="{...}" />
+                <marker date="1476256593000" expanded="true" signature="16935:17312" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OpenXmlUtils.nuspec" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/OpenXmlUtils.nuspec">
+      <file leaf-file-name="OpenXmlElement.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.local/share/JetBrains/Shared/v07/DecompilerCache/decompiler/A7316BF1-EDFD-42B4-84FD-A64CEF0DCF01/00/bfc07f9e/OpenXmlElement.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="51" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="paket.references" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/paket.references">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="paket.references" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils.Tests/paket.references">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="paket.dependencies" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../paket.dependencies">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+            <state relative-caret-position="151">
+              <caret line="772" column="16" selection-start-line="772" selection-start-column="16" selection-end-line="772" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -194,6 +147,7 @@
       <list>
         <option value="$PROJECT_DIR$/../../OpenXmlUtils/Spreadsheet.cs" />
         <option value="$PROJECT_DIR$/../../OpenXmlUtils.Tests/SpreadsheetUnitTest.cs" />
+        <option value="$PROJECT_DIR$/../../OpenXmlUtils/CustomStylesheet.cs" />
       </list>
     </option>
   </component>
@@ -253,6 +207,46 @@
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Solution Items" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenXmlUtils" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenXmlUtils (2 projects)" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Solution Items" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenXmlUtils" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpreadsheetField Types" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpenXmlUtils (2 projects)" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value=".paket" />
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
             </PATH_ELEMENT>
@@ -293,12 +287,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1476252725435</updated>
-      <workItem from="1476252727642" duration="3077000" />
+      <workItem from="1476252727642" duration="3816000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3077000" />
+    <option name="totallyTimeSpent" value="3816000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -314,7 +308,7 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Errors in solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21736111" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors in solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12777779" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -346,21 +340,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/SpreadsheetField Types/DecimalNumberField.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <marker date="1476252265000" expanded="true" signature="0:144" ph="File Information" />
-            <marker date="1476252265000" expanded="true" signature="25:133" ph="/* ... */" />
-            <marker date="1476252265000" expanded="true" signature="146:767" ph="(c) Copyright 2014 Geoplex" />
-            <marker date="1476252265000" expanded="true" signature="181:756" ph="/* ... */" />
-            <marker date="1476252265000" expanded="true" signature="791:909" ph="{...}" />
-            <marker date="1476252265000" expanded="true" signature="848:907" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/Spreadsheet.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
@@ -397,48 +376,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils.Tests/SpreadsheetUnitTest.cs">
+    <entry file="file://$PROJECT_DIR$/../../paket.dependencies">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <marker date="1476255091000" expanded="true" signature="0:173" ph="File Information" />
-            <marker date="1476255091000" expanded="true" signature="25:162" ph="/* ... */" />
-            <marker date="1476255091000" expanded="true" signature="175:796" ph="(c) Copyright 2014 Geoplex" />
-            <marker date="1476255091000" expanded="true" signature="210:785" ph="/* ... */" />
-            <marker date="1476255091000" expanded="true" signature="804:902" ph="..." />
-            <marker date="1476255091000" expanded="true" signature="932:14829" ph="{...}" />
-            <marker date="1476255091000" expanded="true" signature="956:1393" ph="{...}" />
-            <marker date="1476255091000" expanded="true" signature="1450:14827" ph="{...}" />
-            <marker date="1476255091000" expanded="true" signature="1508:1581" ph="{...}" />
-            <marker date="1476255091000" expanded="true" signature="1660:1723" ph="{...}" />
-            <marker date="1476255091000" expanded="true" signature="1774:1934" ph="{...}" />
-            <marker date="1476255091000" expanded="true" signature="1997:4939" ph="{...}" />
-            <marker date="1476255091000" expanded="true" signature="5007:7922" ph="{...}" />
-            <marker date="1476255091000" expanded="true" signature="7979:10996" ph="{...}" />
-            <marker date="1476255091000" expanded="true" signature="11050:14821" ph="{...}" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/SpreadsheetField.cs">
+    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils.Tests/paket.references">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="29" column="59" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
-          <folding>
-            <marker date="1476252265000" expanded="true" signature="0:144" ph="File Information" />
-            <marker date="1476252265000" expanded="true" signature="25:133" ph="/* ... */" />
-            <marker date="1476252265000" expanded="true" signature="146:767" ph="(c) Copyright 2014 Geoplex" />
-            <marker date="1476252265000" expanded="true" signature="181:756" ph="/* ... */" />
-            <marker date="1476252265000" expanded="true" signature="791:1040" ph="{...}" />
-            <marker date="1476252265000" expanded="true" signature="827:1038" ph="{...}" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/paket.references">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/OpenXmlUtils.nuspec">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="51" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/FormulaCell.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-242">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1476252265000" expanded="true" signature="0:136" ph="File Information" />
@@ -452,35 +424,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/OpenXmlUtils.nuspec">
+    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/SpreadsheetField.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="51" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="51" />
-          <folding />
+        <state relative-caret-position="285">
+          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
+          <folding>
+            <marker date="1476252265000" expanded="true" signature="0:144" ph="File Information" />
+            <marker date="1476252265000" expanded="true" signature="25:133" ph="/* ... */" />
+            <marker date="1476252265000" expanded="true" signature="146:767" ph="(c) Copyright 2014 Geoplex" />
+            <marker date="1476252265000" expanded="true" signature="181:756" ph="/* ... */" />
+            <marker date="1476252265000" expanded="true" signature="791:1040" ph="{...}" />
+            <marker date="1476252265000" expanded="true" signature="827:1038" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/paket.references">
+    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils.Tests/SpreadsheetUnitTest.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="151">
+          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
+          <folding>
+            <marker date="1476256232000" expanded="true" signature="0:173" ph="File Information" />
+            <marker date="1476256232000" expanded="true" signature="25:162" ph="/* ... */" />
+            <marker date="1476256232000" expanded="true" signature="175:796" ph="(c) Copyright 2014 Geoplex" />
+            <marker date="1476256232000" expanded="true" signature="210:785" ph="/* ... */" />
+            <marker date="1476256232000" expanded="true" signature="804:885" ph="..." />
+            <marker date="1476256232000" expanded="true" signature="915:14812" ph="{...}" />
+            <marker date="1476256232000" expanded="true" signature="939:1376" ph="{...}" />
+            <marker date="1476256232000" expanded="true" signature="1433:14810" ph="{...}" />
+            <marker date="1476256232000" expanded="true" signature="1491:1564" ph="{...}" />
+            <marker date="1476256232000" expanded="true" signature="1643:1706" ph="{...}" />
+            <marker date="1476256232000" expanded="true" signature="1757:1917" ph="{...}" />
+            <marker date="1476256232000" expanded="true" signature="1980:4922" ph="{...}" />
+            <marker date="1476256232000" expanded="true" signature="4990:7905" ph="{...}" />
+            <marker date="1476256232000" expanded="true" signature="7962:10979" ph="{...}" />
+            <marker date="1476256232000" expanded="true" signature="11033:14804" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/SpreadsheetField Types/DecimalNumberField.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-140">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1476252265000" expanded="true" signature="0:144" ph="File Information" />
+            <marker date="1476252265000" expanded="true" signature="25:133" ph="/* ... */" />
+            <marker date="1476252265000" expanded="true" signature="146:767" ph="(c) Copyright 2014 Geoplex" />
+            <marker date="1476252265000" expanded="true" signature="181:756" ph="/* ... */" />
+            <marker date="1476252265000" expanded="true" signature="791:909" ph="{...}" />
+            <marker date="1476252265000" expanded="true" signature="848:907" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils.Tests/paket.references">
+    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/SpreadsheetField Types/HyperlinkField.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-140">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1476252265000" expanded="true" signature="0:144" ph="File Information" />
+            <marker date="1476252265000" expanded="true" signature="25:133" ph="/* ... */" />
+            <marker date="1476252265000" expanded="true" signature="146:767" ph="(c) Copyright 2014 Geoplex" />
+            <marker date="1476252265000" expanded="true" signature="181:756" ph="/* ... */" />
+            <marker date="1476252265000" expanded="true" signature="791:911" ph="{...}" />
+            <marker date="1476252265000" expanded="true" signature="844:909" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/share/JetBrains/Shared/v07/DecompilerCache/decompiler/A7316BF1-EDFD-42B4-84FD-A64CEF0DCF01/00/bfc07f9e/OpenXmlElement.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="772" column="16" selection-start-line="772" selection-start-column="16" selection-end-line="772" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../paket.dependencies">
+    <entry file="file://$PROJECT_DIR$/../../OpenXmlUtils/CustomStylesheet.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="153">
+          <caret line="268" column="18" selection-start-line="268" selection-start-column="18" selection-end-line="268" selection-end-column="18" />
+          <folding>
+            <marker date="1476256593000" expanded="true" signature="0:145" ph="File Information" />
+            <marker date="1476256593000" expanded="true" signature="25:134" ph="/* ... */" />
+            <marker date="1476256593000" expanded="true" signature="147:768" ph="(c) Copyright 2014 Geoplex" />
+            <marker date="1476256593000" expanded="true" signature="182:757" ph="/* ... */" />
+            <marker date="1476256593000" expanded="true" signature="776:953" ph="..." />
+            <marker date="1476256593000" expanded="true" signature="977:17320" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="1026:17318" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="1077:1568" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="1603:2277" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="2333:2605" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="2677:2753" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="2807:3214" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="3224:3344" ph="/// ..." />
+            <marker date="1476256593000" expanded="true" signature="3526:9661" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="9870:11116" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="11182:11576" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="11624:13291" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="13335:14953" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="14997:16855" ph="{...}" />
+            <marker date="1476256593000" expanded="true" signature="16935:17312" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

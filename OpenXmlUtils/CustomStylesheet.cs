@@ -69,31 +69,32 @@ namespace OpenXmlUtils
 
         private static TableStyles CreateTableStyles()
         {
-            var tss = new TableStyles();
-            tss.Count = 0;
-            tss.DefaultTableStyle = StringValue.FromString("TableStyleMedium9");
-            tss.DefaultPivotStyle = StringValue.FromString("PivotStyleLight16");
-            return tss;
+            return new TableStyles
+            {
+                Count = 0,
+                DefaultTableStyle = StringValue.FromString("TableStyleMedium9"),
+                DefaultPivotStyle = StringValue.FromString("PivotStyleLight16")
+            };
         }
 
         private static DifferentialFormats CreateDifferentialFormats()
         {
-            var dfs = new DifferentialFormats();
-            dfs.Count = 0;
-            return dfs;
+            return new DifferentialFormats {Count = 0};
         }
 
         private static CellStyles CreateCellStyles()
         {
-            var css = new CellStyles();
 
             // cell style 0
-            var cs = new CellStyle();
-            cs.Name = StringValue.FromString("Normal");
-            cs.FormatId = 0;
-            cs.BuiltinId = 0;
-            css.AppendChild(cs);
+            var cs = new CellStyle
+            {
+                Name = StringValue.FromString("Normal"),
+                FormatId = 0,
+                BuiltinId = 0
+            };
+            var css = new CellStyles();
             css.Count = UInt32Value.FromUInt32((uint) css.ChildElements.Count);
+            css.AppendChild(cs);
             return css;
         }
 
@@ -106,93 +107,115 @@ namespace OpenXmlUtils
             var cfs = new CellFormats();
 
             // CustomCellFormats.DefaultText
-            var cf = new CellFormat();
-            cf.NumberFormatId = 0;
-            cf.FontId = 0;
-            cf.FillId = 0;
-            cf.BorderId = 0;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(false);
+            var cf = new CellFormat
+            {
+                NumberFormatId = 0,
+                FontId = 0,
+                FillId = 0,
+                BorderId = 0,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(false)
+            };
             cfs.AppendChild(cf);
 
             // CustomCellFormats.DefaultDate
-            cf = new CellFormat();
-            cf.NumberFormatId = 14; // mm-dd-yy
-            cf.FontId = 0;
-            cf.FillId = 0;
-            cf.BorderId = 0;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(true);
+            cf = new CellFormat
+            {
+                NumberFormatId = 14,
+                FontId = 0,
+                FillId = 0,
+                BorderId = 0,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(true)
+            };
+            // mm-dd-yy
             cfs.AppendChild(cf);
 
             // CustomCellFormats.DefaultNumber2DecimalPlace
-            cf = new CellFormat();
-            cf.NumberFormatId = 4; // #,##0.00
-            cf.FontId = 0;
-            cf.FillId = 0;
-            cf.BorderId = 0;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(true);
+            cf = new CellFormat
+            {
+                NumberFormatId = 4,
+                FontId = 0,
+                FillId = 0,
+                BorderId = 0,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(true)
+            };
+            // #,##0.00
             cfs.AppendChild(cf);
 
             // CustomCellFormats.DefaultNumber5DecimalPlace
-            cf = new CellFormat();
-            cf.NumberFormatId = nf5Decimal.NumberFormatId;
-            cf.FontId = 0;
-            cf.FillId = 0;
-            cf.BorderId = 0;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(true);
+            cf = new CellFormat
+            {
+                NumberFormatId = nf5Decimal.NumberFormatId,
+                FontId = 0,
+                FillId = 0,
+                BorderId = 0,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(true)
+            };
             cfs.AppendChild(cf);
 
             // CustomCellFormats.DefaultDateTime
-            cf = new CellFormat();
-            cf.NumberFormatId = nfDateTime.NumberFormatId;
-            cf.FontId = 0;
-            cf.FillId = 0;
-            cf.BorderId = 0;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(true);
+            cf = new CellFormat
+            {
+                NumberFormatId = nfDateTime.NumberFormatId,
+                FontId = 0,
+                FillId = 0,
+                BorderId = 0,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(true)
+            };
             cfs.AppendChild(cf);
 
             // CustomCellFormats.HeaderText
-            cf = new CellFormat();
-            cf.NumberFormatId = 0;
-            cf.FontId = 1;
-            cf.FillId = 2;
-            cf.BorderId = 0;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(false);
+            cf = new CellFormat
+            {
+                NumberFormatId = 0,
+                FontId = 1,
+                FillId = 2,
+                BorderId = 0,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(false)
+            };
             cfs.AppendChild(cf);
 
             // CustomCellFormats.TotalsNumber
-            cf = new CellFormat();
-            cf.NumberFormatId = 0;
-            cf.FontId = 0;
-            cf.FillId = 3;
-            cf.BorderId = 2;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(true);
+            cf = new CellFormat
+            {
+                NumberFormatId = 0,
+                FontId = 0,
+                FillId = 3,
+                BorderId = 2,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(true)
+            };
             cfs.AppendChild(cf);
 
             // CustomCellFormats.TotalsNumber2DecimalPlace
-            cf = new CellFormat();
-            cf.NumberFormatId = 4; // #,##0.00
-            cf.FontId = 0;
-            cf.FillId = 3;
-            cf.BorderId = 2;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(true);
+            cf = new CellFormat
+            {
+                NumberFormatId = 4,
+                FontId = 0,
+                FillId = 3,
+                BorderId = 2,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(true)
+            };
+            // #,##0.00
             cfs.AppendChild(cf);
 
             // CustomCellFormats.TotalsText
-            cf = new CellFormat();
-            cf.NumberFormatId = 49; // @
-            cf.FontId = 0;
-            cf.FillId = 3;
-            cf.BorderId = 2;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(true);
+            cf = new CellFormat
+            {
+                NumberFormatId = 49,
+                FontId = 0,
+                FillId = 3,
+                BorderId = 2,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(true)
+            };
+            // @
             cfs.AppendChild(cf);
 
             // CustomCellFormats.TitleText
@@ -210,45 +233,53 @@ namespace OpenXmlUtils
             cfs.AppendChild(cf);
 
             // CustomCellFormats.SubtitleText
-            cf = new CellFormat();
-            cf.NumberFormatId = 0;
-            cf.FontId = 3;
-            cf.FillId = 0;
-            cf.BorderId = 0;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(false);
-            cf.Alignment = new Alignment
+            cf = new CellFormat
             {
-                Vertical = new EnumValue<VerticalAlignmentValues>(VerticalAlignmentValues.Top)
+                NumberFormatId = 0,
+                FontId = 3,
+                FillId = 0,
+                BorderId = 0,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(false),
+                Alignment = new Alignment
+                {
+                    Vertical = new EnumValue<VerticalAlignmentValues>(VerticalAlignmentValues.Top)
+                }
             };
             cfs.AppendChild(cf);
 
             // CustomCellFormats.Duration
-            cf = new CellFormat();
-            cf.NumberFormatId = nfDuration.NumberFormatId; // [h]:mm
-            cf.FontId = 0;
-            cf.FillId = 0;
-            cf.BorderId = 0;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(true);
-            cf.Alignment = new Alignment
+            cf = new CellFormat
             {
-                Horizontal = new EnumValue<HorizontalAlignmentValues>(HorizontalAlignmentValues.Right)
+                NumberFormatId = nfDuration.NumberFormatId,
+                FontId = 0,
+                FillId = 0,
+                BorderId = 0,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(true),
+                Alignment = new Alignment
+                {
+                    Horizontal = new EnumValue<HorizontalAlignmentValues>(HorizontalAlignmentValues.Right)
+                }
             };
+            // [h]:mm
             cfs.AppendChild(cf);
 
             // CustomCellFormats.TotalsNumber
-            cf = new CellFormat();
-            cf.NumberFormatId = nfTotalDuration.NumberFormatId; // d:h:mm
-            cf.FontId = 0;
-            cf.FillId = 3;
-            cf.BorderId = 2;
-            cf.FormatId = 0;
-            cf.ApplyNumberFormat = BooleanValue.FromBoolean(true);
-            cf.Alignment = new Alignment
+            cf = new CellFormat
             {
-                Horizontal = new EnumValue<HorizontalAlignmentValues>(HorizontalAlignmentValues.Right)
+                NumberFormatId = nfTotalDuration.NumberFormatId,
+                FontId = 0,
+                FillId = 3,
+                BorderId = 2,
+                FormatId = 0,
+                ApplyNumberFormat = BooleanValue.FromBoolean(true),
+                Alignment = new Alignment
+                {
+                    Horizontal = new EnumValue<HorizontalAlignmentValues>(HorizontalAlignmentValues.Right)
+                }
             };
+            // d:h:mm
             cfs.AppendChild(cf);
 
             // CustomCellFormats.Hyperlink

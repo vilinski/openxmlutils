@@ -22,7 +22,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using NUnit.Framework;
 using System.IO;
 
@@ -46,7 +45,7 @@ namespace OpenXmlUtils.Tests
     [TestFixture]
     public class SpreadsheetUnitTest
     {
-        private string getTempFile(string fileName)
+        private string GetTempFile(string fileName)
         {
             return Path.Combine(_tempDir, fileName);
         }
@@ -95,7 +94,7 @@ namespace OpenXmlUtils.Tests
                 new HyperlinkField{ Title = "Website", FieldName = "Url", DisplayFieldName = "Hyperlink"}
             };
 
-            Spreadsheet.Create(getTempFile("songs.xlsx"),
+            Spreadsheet.Create(GetTempFile("songs.xlsx"),
                 new SheetDefinition<Song>
                 {
                     Fields = fields,
@@ -133,7 +132,7 @@ namespace OpenXmlUtils.Tests
                 new HyperlinkField{ Title = "Website", FieldName = "Url", DisplayFieldName = "Hyperlink"}
             };
 
-            Spreadsheet.Create(getTempFile("songs_dict.xlsx"),
+            Spreadsheet.Create(GetTempFile("songs_dict.xlsx"),
                 new SheetDefinition<object>
                 {
                     Fields = fields,
@@ -172,7 +171,7 @@ namespace OpenXmlUtils.Tests
                 new SpreadsheetField{ Title = "RandomBool", FieldName = "Bool"}
             };
 
-            Spreadsheet.Create(getTempFile("songs_multi.xlsx"),
+            Spreadsheet.Create(GetTempFile("songs_multi.xlsx"),
                 new List<SheetDefinition<Song>>
                 {
                     new SheetDefinition<Song>
