@@ -94,7 +94,8 @@ namespace OpenXmlUtils.Tests
                 new HyperlinkField{ Title = "Website", FieldName = "Url", DisplayFieldName = "Hyperlink"}
             };
 
-            Spreadsheet.Create(GetTempFile("songs.xlsx"),
+            var file = GetTempFile("songs.xlsx");
+            Spreadsheet.Create(file,
                 new SheetDefinition<Song>
                 {
                     Fields = fields,

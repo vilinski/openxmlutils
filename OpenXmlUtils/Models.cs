@@ -1,13 +1,15 @@
-﻿
-#region File Information
+﻿#region File Information
+
 //
 // File: "SheetDefinition.cs"
 // Purpose: "Defines a single sheet (or tab) in a xlxs spreadsheet."
 // Author: "Geoplex"
 // 
+
 #endregion
 
 #region (c) Copyright 2014 Geoplex
+
 //
 // THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
@@ -19,12 +21,31 @@
 // POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF LIABILITY, ARISING OUT OF OR IN
 // CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
+
 #endregion
 
 using System.Collections.Generic;
 
 namespace OpenXmlUtils
 {
+    public class SpreadsheetField
+    {
+        public string Title { get; set; }
+        public string FieldName { get; set; }
+        public bool IgnoreFromTotals { get; set; }
+        public bool CountNoneNullRowsForTotal { get; set; }
+    }
+
+    public class DecimalNumberField : SpreadsheetField
+    {
+        public int DecimalPlaces { get; set; }
+    }
+
+    public class HyperlinkField : SpreadsheetField
+    {
+        public string DisplayFieldName { get; set; }
+    }
+
     public class SheetDefinition<T>
     {
         /// <summary>
@@ -56,6 +77,5 @@ namespace OpenXmlUtils
         /// Whether or not to include a row of calculated totals to the table
         /// </summary>
         public bool IncludeTotalsRow { get; set; }
-
     }
 }

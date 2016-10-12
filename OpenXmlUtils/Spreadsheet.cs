@@ -29,7 +29,7 @@ using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace OpenXmlUtils
 {
-    public class Spreadsheet
+    public static class Spreadsheet
     {
         /// <summary>
         /// Write xlsx spreadsheet file of a list of T objects
@@ -96,10 +96,8 @@ namespace OpenXmlUtils
                 // add work sheets
                 var sheets = new Sheets();
                 var list = defs.ToList();
-                for (var i = 0; i < list.Count(); i++)
-                {
-                    sheets.AppendChild(CreateSheet(i+1, list[i], workbookPart));
-                }
+                for (var i = 0; i < list.Count; i++)
+                    sheets.AppendChild(CreateSheet(i + 1, list[i], workbookPart));
                 workbook.AppendChild(sheets);
 
                 // add workbook to workbook part
@@ -118,7 +116,7 @@ namespace OpenXmlUtils
             // variables
             var numCols = def.Fields.Count;
             var numRows = def.Objects.Count;
-            var az = new List<Char>(Enumerable.Range('A', 'Z' - 'A' + 1).Select(i => (Char) i).ToArray());
+            var az = new List<char>(Enumerable.Range('A', 'Z' - 'A' + 1).Select(i => (char) i).ToArray());
             var headerCols = az.GetRange(0, numCols);
             var hasTitleRow = def.Title != null;
             var hasSubtitleRow = def.SubTitle != null;
@@ -135,7 +133,7 @@ namespace OpenXmlUtils
             for (var col = 0; col < numCols; col++)
             {
                 var width = ColumnWidth(sheetData, col, titleRowCount);
-                columns.AppendChild(CreateColumnMetadata((UInt32) col + 1, (UInt32) numCols + 1, width));
+                columns.AppendChild(CreateColumnMetadata((uint) col + 1, (uint) numCols + 1, width));
             }
 
             // populate worksheet
@@ -147,36 +145,82 @@ namespace OpenXmlUtils
             worksheet.AppendChild(new AutoFilter
             {
                 Reference =
-                    String.Format("{0}{1}:{2}{3}", headerCols.First(), firstTableRow - 1, headerCols.Last(),
-                        numRows + titleRowCount + 1)
+                    $"{headerCols.First()}{firstTableRow - 1}:{headerCols.Last()}{numRows + titleRowCount + 1}"
             });
 
             // add worksheet to worksheet part
             worksheetPart.Worksheet = worksheet;
             worksheetPart.Worksheet.Save();
 
-            return new Sheet { Name = def.Name, SheetId = (UInt32)sheetIndex, Id = worksheetId };
+            return new Sheet {Name = def.Name, SheetId = (uint) sheetIndex, Id = worksheetId};
+        }
+
+        private static Cell NumberCell(string header, string text, int index)
+        {
+            return new Cell
+            {
+                DataType = CellValues.Number,
+                CellReference = header + index,
+                CellValue = new CellValue(text)
+            };
+        }
+
+        private static Cell DateCell(string header, DateTime dateTime, int index)
+        {
+            return new Cell
+            {
+                DataType = CellValues.Date,
+                CellReference = header + index,
+                StyleIndex = (uint) CustomStylesheet.CustomCellFormats.DefaultDate,
+                CellValue = new CellValue(dateTime.ToString("yyyy-MM-dd"))
+            };
+        }
+
+        private static Cell FormulaCell(string header, string text, int index)
+        {
+            return new Cell
+            {
+                CellFormula = new CellFormula {CalculateCell = true, Text = text},
+                DataType = CellValues.Number,
+                CellReference = header + index
+            };
+        }
+
+        private static Cell TextCell(string header, string text, int index)
+        {
+            return new Cell
+            {
+                DataType = CellValues.InlineString,
+                CellReference = header + index,
+                InlineString = new InlineString {Text = new Text {Text = text}}
+            };
+        }
+
+        private static Cell WithStyleIndex(this Cell cell, UInt32Value styleIndex)
+        {
+            cell.StyleIndex = styleIndex;
+            return cell;
         }
 
         private static double ColumnWidth(SheetData sheetData, int col, int titleRowCount)
         {
-            var rows = sheetData.ChildElements.ToList();
-            if (col == 0)
-            {
-                rows = sheetData.ChildElements.ToList().GetRange(titleRowCount, sheetData.ChildElements.Count - titleRowCount);
-            }
+            var rows = col == 0
+                ? sheetData.ChildElements.ToList()
+                    .GetRange(titleRowCount, sheetData.ChildElements.Count - titleRowCount)
+                : sheetData.ChildElements.ToList();
 
-            var maxLength = (from row in rows
+            var maxLength =
+            (from row in rows
                 where row.ChildElements.Count > col
-                select row.ChildElements[col]
+                select row.ChildElements[col] as Cell
                 into cell
-                where cell.GetType() != typeof (FormulaCell)
+                where cell?.CellFormula != null //cell.GetType() != typeof (FormulaCell)
                 select cell.InnerText.Length).Concat(new[] {0}).Max();
-            var width = maxLength*0.9 + 5;
+            var width = maxLength * 0.9 + 5;
             return width;
         }
 
-        private static SheetData CreateSheetData<T>(IList< T> objects, List<SpreadsheetField> fields,
+        private static SheetData CreateSheetData<T>(IList<T> objects, List<SpreadsheetField> fields,
             List<char> headerCols, bool includedTotalsRow, string sheetTitle, string sheetSubTitle,
             out int firstTableRow)
         {
@@ -228,24 +272,19 @@ namespace OpenXmlUtils
         private static Row CreateTitle(string title, List<char> headerCols, ref int rowIndex)
         {
             var header = new Row {RowIndex = (uint) rowIndex, Height = 40, CustomHeight = true};
-            var c = new TextCell(headerCols[0].ToString(), title, rowIndex)
-            {
-                StyleIndex = (UInt32)CustomStylesheet.CustomCellFormats.TitleText
-            };
-            header.Append(c);
+            header.AppendChild(TextCell(headerCols[0].ToString(), title, rowIndex)
+                .WithStyleIndex((uint) CustomStylesheet.CustomCellFormats.TitleText));
 
             return header;
         }
 
         private static Row CreateSubTitle(string title, List<char> headerCols, ref int rowIndex)
         {
-            var header = new Row { RowIndex = (uint)rowIndex, Height = 28, CustomHeight = true };
+            var header = new Row {RowIndex = (uint) rowIndex, Height = 28, CustomHeight = true};
 
-            var c = new TextCell(headerCols[0].ToString(), title, rowIndex)
-            {
-                StyleIndex = (UInt32)CustomStylesheet.CustomCellFormats.SubtitleText
-            };
-            header.Append(c);
+            var c = TextCell(headerCols[0].ToString(), title, rowIndex)
+                .WithStyleIndex((uint) CustomStylesheet.CustomCellFormats.SubtitleText);
+            header.AppendChild(c);
 
             return header;
         }
@@ -256,17 +295,15 @@ namespace OpenXmlUtils
 
             for (var col = 0; col < headerCols.Count; col++)
             {
-                var c = new TextCell(headerCols[col].ToString(), headerNames[col], rowIndex)
-                {
-                    StyleIndex = (UInt32) CustomStylesheet.CustomCellFormats.HeaderText
-                };
-                header.Append(c);
+                var c = TextCell(headerCols[col].ToString(), headerNames[col], rowIndex)
+                    .WithStyleIndex((uint) CustomStylesheet.CustomCellFormats.HeaderText);
+                header.AppendChild(c);
             }
             return header;
         }
 
         private static void CreateTable<T>(IList<T> objects, ref int rowIndex, int numCols,
-            List<SpreadsheetField> fields, List<char> headers, SheetData sheetData, bool hidden=false, int outline=0)
+            List<SpreadsheetField> fields, List<char> headers, SheetData sheetData, bool hidden = false, int outline = 0)
         {
             // for each object
             foreach (var rowObj in objects)
@@ -275,7 +312,7 @@ namespace OpenXmlUtils
                 var list = rowObj as IList<object>;
                 if (list != null)
                 {
-                    CreateTable(list, ref rowIndex, numCols, fields, headers, sheetData, true, outline+1);
+                    CreateTable(list, ref rowIndex, numCols, fields, headers, sheetData, true, outline + 1);
                     continue;
                 }
 
@@ -284,9 +321,9 @@ namespace OpenXmlUtils
                 // create a row
                 var row = new Row
                 {
-                    RowIndex = (uint)rowIndex,
+                    RowIndex = (uint) rowIndex,
                     Collapsed = new BooleanValue(false),
-                    OutlineLevel = new ByteValue((byte)outline),
+                    OutlineLevel = new ByteValue((byte) outline),
                     Hidden = new BooleanValue(hidden)
                 };
 
@@ -301,19 +338,16 @@ namespace OpenXmlUtils
 
                     Cell cell;
 
-                    if (field.GetType() == typeof (HyperlinkField))
+                    if (field.GetType() == typeof(HyperlinkField))
                     {
-                        var displayColumnObj = GetColumnObject(((HyperlinkField)field).DisplayFieldName, rowObj);
-                        cell = CreateHyperlinkCell<T>(rowIndex, headers, columnObj, displayColumnObj, col);
+                        var displayColumnObj = GetColumnObject(((HyperlinkField) field).DisplayFieldName, rowObj);
+                        cell = CreateHyperlinkCell(rowIndex, headers, columnObj, displayColumnObj, col);
                     }
                     else if (field.GetType() == typeof(DecimalNumberField))
-                    {
-                        cell = CreateDecimalNumberCell<T>(rowIndex, headers, columnObj, ((DecimalNumberField)field).DecimalPlaces, col);
-                    }
+                        cell = CreateDecimalNumberCell(rowIndex, headers, columnObj,
+                            ((DecimalNumberField) field).DecimalPlaces, col);
                     else
-                    {
-                        cell = CreateCell<T>(rowIndex, headers, columnObj, col);
-                    }
+                        cell = CreateCell(rowIndex, headers, columnObj, col);
 
                     row.AppendChild(cell);
 
@@ -323,67 +357,46 @@ namespace OpenXmlUtils
             }
         }
 
-        private static Cell CreateHyperlinkCell<T>(int rowIndex, List<char> headers, object columnObj, object displayColumnObj, int col)
+        private static Cell CreateHyperlinkCell(int rowIndex, List<char> headers, object columnObj,
+            object displayColumnObj, int col)
         {
-            return new FormulaCell(headers[col].ToString(),
-                String.Format(@"HYPERLINK(""{0}"", ""{1}"")", columnObj, displayColumnObj), rowIndex)
-            {
-                StyleIndex = (UInt32) CustomStylesheet.CustomCellFormats.Hyperlink
-            };
+            return FormulaCell(headers[col].ToString(),
+                    $@"HYPERLINK(""{columnObj}"", ""{displayColumnObj}"")", rowIndex)
+                .WithStyleIndex((uint) CustomStylesheet.CustomCellFormats.Hyperlink);
         }
 
-        private static Cell CreateDecimalNumberCell<T>(int rowIndex, List<char> headers, object columnObj, int decimalPlaces, int col)
+        private static Cell CreateDecimalNumberCell(int rowIndex, List<char> headers, object columnObj,
+            int decimalPlaces, int col)
         {
-            // TODO: decimal places other than 5
-            return new NumberCell(headers[col].ToString(), columnObj.ToString(), rowIndex)
-            {
-                StyleIndex = (UInt32)CustomStylesheet.CustomCellFormats.DefaultNumber5DecimalPlace
-            };
+            var decStyle = decimalPlaces == 5
+                ? (uint) CustomStylesheet.CustomCellFormats.DefaultNumber5DecimalPlace
+                : (uint) CustomStylesheet.CustomCellFormats.DefaultNumber2DecimalPlace;
+            return NumberCell(headers[col].ToString(), columnObj.ToString(), rowIndex)
+                .WithStyleIndex(decStyle);
         }
 
-        private static Cell CreateCell<T>(int rowIndex, List<char> headers, object columnObj, int col)
+        private static Cell CreateCell(int rowIndex, List<char> headers, object columnObj, int col)
         {
             Cell cell;
             if (columnObj is string)
-            {
-                cell = new TextCell(headers[col].ToString(), columnObj.ToString(), rowIndex);
-            }
+                cell = TextCell(headers[col].ToString(), columnObj.ToString(), rowIndex);
             else if (columnObj is bool)
-            {
-                var value = (bool) columnObj ? "Yes" : "No";
-                cell = new TextCell(headers[col].ToString(), value, rowIndex);
-            }
+                cell = TextCell(headers[col].ToString(), (bool) columnObj ? "Yes" : "No", rowIndex);
             else if (columnObj is DateTime)
-            {
-                cell = new DateCell(headers[col].ToString(), (DateTime) columnObj, rowIndex);
-            }
+                cell = DateCell(headers[col].ToString(), (DateTime) columnObj, rowIndex);
             else if (columnObj is TimeSpan)
-            {
-                var ts = (TimeSpan) columnObj;
                 // excel stores time as "fraction of hours in a day"
-                cell = new NumberCell(headers[col].ToString(), (ts.TotalHours/24).ToString(), rowIndex)
-                {
-                    StyleIndex = (UInt32) CustomStylesheet.CustomCellFormats.Duration
-                };
-            }
+                cell = NumberCell(headers[col].ToString(), (((TimeSpan) columnObj).TotalHours / 24).ToString(), rowIndex)
+                    .WithStyleIndex((uint) CustomStylesheet.CustomCellFormats.Duration);
             else if (columnObj is decimal || columnObj is double)
-            {
-                cell = new NumberCell(headers[col].ToString(), columnObj.ToString(), rowIndex)
-                {
-                    StyleIndex = (UInt32) CustomStylesheet.CustomCellFormats.DefaultNumber2DecimalPlace
-                };
-            }
+                cell = NumberCell(headers[col].ToString(), columnObj.ToString(), rowIndex)
+                    .WithStyleIndex((uint) CustomStylesheet.CustomCellFormats.DefaultNumber2DecimalPlace);
             else
             {
                 long value;
-                if (long.TryParse(columnObj.ToString(), out value))
-                {
-                    cell = new NumberCell(headers[col].ToString(), columnObj.ToString(), rowIndex);
-                }
-                else
-                {
-                    cell = new TextCell(headers[col].ToString(), columnObj.ToString(), rowIndex);
-                }
+                cell = long.TryParse(columnObj.ToString(), out value)
+                    ? NumberCell(headers[col].ToString(), columnObj.ToString(), rowIndex)
+                    : TextCell(headers[col].ToString(), columnObj.ToString(), rowIndex);
             }
             return cell;
         }
@@ -404,7 +417,7 @@ namespace OpenXmlUtils
                 return null;
 
             var myf = rowObj.GetType().GetProperty(fieldName);
-            if (myf == null) 
+            if (myf == null)
                 return null;
 
             var obj = myf.GetValue(rowObj, null);
@@ -425,10 +438,10 @@ namespace OpenXmlUtils
                 var field = fields[col];
                 if (field.IgnoreFromTotals)
                 {
-                    total.AppendChild(new TextCell(headers[col].ToString(), string.Empty, rowIndex)
-                    {
-                        StyleIndex = (UInt32)CustomStylesheet.CustomCellFormats.TotalsText
-                    });
+                    total.AppendChild(
+                        TextCell(headers[col].ToString(), string.Empty, rowIndex)
+                            .WithStyleIndex((uint) CustomStylesheet.CustomCellFormats.TotalsText)
+                    );
                     continue;
                 }
 
@@ -444,28 +457,18 @@ namespace OpenXmlUtils
                 }
 
                 if (field.CountNoneNullRowsForTotal)
-                {
-                    total.AppendChild(CreateRowTotalFomulaCell(rowIndex, firstTableRow, headers, col, 
-                        (UInt32)CustomStylesheet.CustomCellFormats.TotalsNumber, true));
-                }
+                    total.AppendChild(CreateRowTotalFomulaCell(rowIndex, firstTableRow, headers, col,
+                        (uint) CustomStylesheet.CustomCellFormats.TotalsNumber, true));
 
                 if (col == 0)
-                {
-                    total.AppendChild(new TextCell(headers[col].ToString(), "Total", rowIndex)
-                    {
-                        StyleIndex = (UInt32) CustomStylesheet.CustomCellFormats.TotalsText
-                    });
-                }
+                    total.AppendChild(TextCell(headers[col].ToString(), "Total", rowIndex)
+                        .WithStyleIndex((uint) CustomStylesheet.CustomCellFormats.TotalsText));
                 else if (columnObject is decimal || columnObject is double)
-                {
                     total.AppendChild(CreateRowTotalFomulaCell(rowIndex, firstTableRow, headers, col,
-                        (UInt32) CustomStylesheet.CustomCellFormats.TotalsNumber2DecimalPlace));
-                }
+                        (uint) CustomStylesheet.CustomCellFormats.TotalsNumber2DecimalPlace));
                 else if (columnObject is TimeSpan)
-                {
                     total.AppendChild(CreateRowTotalFomulaCell(rowIndex, firstTableRow, headers, col,
-                           (UInt32)CustomStylesheet.CustomCellFormats.TotalsDuration));
-                }
+                        (uint) CustomStylesheet.CustomCellFormats.TotalsDuration));
                 else
                 {
                     long value;
@@ -473,21 +476,20 @@ namespace OpenXmlUtils
                         long.TryParse(columnObject.ToString(), out value))
                     {
                         total.AppendChild(CreateRowTotalFomulaCell(rowIndex, firstTableRow, headers, col,
-                            (UInt32) CustomStylesheet.CustomCellFormats.TotalsNumber));
+                            (uint) CustomStylesheet.CustomCellFormats.TotalsNumber));
                     }
                     else
                     {
-                        total.AppendChild(new TextCell(headers[col].ToString(), string.Empty, rowIndex)
-                        {
-                            StyleIndex = (UInt32) CustomStylesheet.CustomCellFormats.TotalsText
-                        });
+                        total.AppendChild(TextCell(headers[col].ToString(), string.Empty, rowIndex)
+                            .WithStyleIndex((uint) CustomStylesheet.CustomCellFormats.TotalsText));
                     }
                 }
             } // for each column
             sheetData.AppendChild(total);
         }
 
-        private static FormulaCell CreateRowTotalFomulaCell(int rowIndex, int firstTableRow, List<char> headers, int col, UInt32 styleIndex, bool countNonBlank = false)
+        private static Cell CreateRowTotalFomulaCell(int rowIndex, int firstTableRow, List<char> headers, int col,
+            uint styleIndex, bool countNonBlank = false)
         {
             var headerCol = headers[col].ToString();
             var firstRow = headerCol + firstTableRow;
@@ -495,20 +497,21 @@ namespace OpenXmlUtils
             return CreateFormulaCell(rowIndex, headers, col, styleIndex, countNonBlank, firstRow, lastRow);
         }
 
-        private static FormulaCell CreateFormulaCell(int rowIndex, List<char> headers, int col, uint styleIndex,
+        private static Cell CreateFormulaCell(int rowIndex, List<char> headers, int col, uint styleIndex,
             bool countNonBlank, string firstCell, string lastCell)
         {
             var formula = (countNonBlank ? "COUNTA" : "SUM") + "(" + firstCell + ":" + lastCell + ")";
-            return new FormulaCell(headers[col].ToString(), formula, rowIndex) {StyleIndex = styleIndex};
+            return FormulaCell(headers[col].ToString(), formula, rowIndex)
+                .WithStyleIndex(styleIndex);
         }
 
         private static List<string> GetPropertyInfo<T>()
         {
-            var propertyInfos = typeof (T).GetProperties();
+            var propertyInfos = typeof(T).GetProperties();
             return propertyInfos.Select(propertyInfo => propertyInfo.Name).ToList();
         }
 
-        private static Column CreateColumnMetadata(UInt32 startColumnIndex, UInt32 endColumnIndex, double width)
+        private static Column CreateColumnMetadata(uint startColumnIndex, uint endColumnIndex, double width)
         {
             var column = new Column
             {

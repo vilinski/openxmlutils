@@ -103,16 +103,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomStylesheet.cs" />
-    <Compile Include="DateCell.cs" />
-    <Compile Include="SheetDefinition.cs" />
+    <Compile Include="Stylesheet.cs" />
+    <Compile Include="Models.cs" />
     <Compile Include="Spreadsheet.cs" />
-    <Compile Include="FormulaCell.cs" />
-    <Compile Include="NumberCell.cs" />
-    <Compile Include="SpreadsheetField Types\DecimalNumberField.cs" />
-    <Compile Include="SpreadsheetField Types\HyperlinkField.cs" />
-    <Compile Include="SpreadsheetField.cs" />
-    <Compile Include="TextCell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
