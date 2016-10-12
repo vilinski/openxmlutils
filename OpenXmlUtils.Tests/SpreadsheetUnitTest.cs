@@ -22,7 +22,9 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+using NUnit.Framework;
+using System.IO;
 
 namespace OpenXmlUtils.Tests
 {
@@ -40,10 +42,33 @@ namespace OpenXmlUtils.Tests
         public string Hyperlink { get; set; }
     }
 
-    [TestClass]
+
+    [TestFixture]
     public class SpreadsheetUnitTest
     {
-        [TestMethod]
+        private string getTempFile(string fileName)
+        {
+            return Path.Combine(_tempDir, fileName);
+        }
+
+        private string _tempDir;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _tempDir = Path.GetTempPath();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            foreach (var file in Directory.GetFiles(_tempDir, "song*.xlsx"))
+            {
+                File.Delete(file);
+            }
+        }
+
+        [Test]
         public void TestObjectsToSpreadsheet()
         {
             var songs =
@@ -70,7 +95,7 @@ namespace OpenXmlUtils.Tests
                 new HyperlinkField{ Title = "Website", FieldName = "Url", DisplayFieldName = "Hyperlink"}
             };
 
-            Spreadsheet.Create(@"C:\temp\songs.xlsx",
+            Spreadsheet.Create(getTempFile("songs.xlsx"),
                 new SheetDefinition<Song>
                 {
                     Fields = fields,
@@ -81,7 +106,7 @@ namespace OpenXmlUtils.Tests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void TestDictionariesToSpreadsheet()
         {
             var songs =
@@ -108,7 +133,7 @@ namespace OpenXmlUtils.Tests
                 new HyperlinkField{ Title = "Website", FieldName = "Url", DisplayFieldName = "Hyperlink"}
             };
 
-            Spreadsheet.Create(@"C:\temp\songs_dict.xlsx",
+            Spreadsheet.Create(getTempFile("songs_dict.xlsx"),
                 new SheetDefinition<object>
                 {
                     Fields = fields,
@@ -118,7 +143,7 @@ namespace OpenXmlUtils.Tests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void TestMultipleSheets()
         {
             var songs =
@@ -147,7 +172,7 @@ namespace OpenXmlUtils.Tests
                 new SpreadsheetField{ Title = "RandomBool", FieldName = "Bool"}
             };
 
-            Spreadsheet.Create(@"C:\temp\songs_multi.xlsx",
+            Spreadsheet.Create(getTempFile("songs_multi.xlsx"),
                 new List<SheetDefinition<Song>>
                 {
                     new SheetDefinition<Song>
@@ -167,7 +192,7 @@ namespace OpenXmlUtils.Tests
                 });
         }
 
-        [TestMethod]
+        [Test]
         public void TestRowGrouping()
         {
             var songs =
